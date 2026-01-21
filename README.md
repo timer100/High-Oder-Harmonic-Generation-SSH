@@ -10,11 +10,9 @@ Key features include:
 
 ## 1. Installation
 
-To install the project, clone the repository and install the dependencies.
-
 ```bash
-git clone https://github.com/YourUsername/HHG_Project.git
-cd HHG_Project
+git clone https://github.com/timer100/High-Oder-Harmonic-Generation-SSH.git
+cd High-Oder-Harmonic-Generation-SSH
 pip install -r requirements.txt
 ```
 
@@ -24,7 +22,7 @@ Ensure the `hhg` package is in your Python path.
 ```python
 import sys
 import os
-sys.path.append(os.getcwd()) # Or specific path to HHG_Project
+sys.path.append(os.getcwd()) 
 
 import numpy as np
 import matplotlib.pyplot as plt
@@ -39,7 +37,7 @@ from hhg.analysis import plot_band_structure, plot_wavefunction
 ## 3. Models
 
 ### Su-Schrieffer-Heeger (SSH) Model
-The SSH model describes a 1D chain with alternating hopping amplitudes.
+Load the SSH model from the `hhg.models` module.
 
 ```python
 # Topological Phase (delta < 0)
