@@ -1,5 +1,5 @@
 import numpy as np
-from scipy.sparse import eye, csc_matrix
+from scipy.sparse import eye
 from scipy.sparse.linalg import spsolve
 from tqdm import tqdm
 from ..models.base import Hamiltonian
@@ -37,7 +37,6 @@ class TimeEvolver:
         
         if psi is None:
             # 1. Initial State (Ground State)
-            # Delegate to model to handle any parity/topological state logic
             psi = self.model.get_ground_state()
         
         # 2. Time Propagation
@@ -54,17 +53,11 @@ class TimeEvolver:
             t_mid = t + dt / 2
             H_mid = self.model.build_time_dependent_hamiltonian(t_mid, field_func)
             
-            # (I + i*dt/2 * H) psi(t+dt) = (I - i*dt/2 * H) psi(t)
-            # A x = B b
-            # A = I + 1j * (dt/2) * H
-            # B = I - 1j * (dt/2) * H
-            
             factor = 1j * (dt / 2)
             A = (I + factor * H_mid).tocsc()
             B = (I - factor * H_mid).tocsc()
             
             # Solve for next step
-            # spsolve can handle multiple RHS (psi has N_occ columns)
             psi = spsolve(A, B @ psi)
             
             yield i + 1, t + dt, psi

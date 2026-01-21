@@ -11,19 +11,12 @@ def compute_position_expectation(psi: np.ndarray, positions: np.ndarray) -> floa
     Returns:
         float: Total dipole moment (real part).
     """
-    # einsum: sum over sites (j), sum over occupied states (i)
-    # psi is (sites, states) -> (j, i)
-    # <psi|x|psi> = sum_i sum_j psi[j,i]* x[j] psi[j,i]
     return np.einsum('ji,j,ji->', np.conj(psi), positions, psi).real
 
 def compute_dipole_acceleration(X_t_values: np.ndarray, dt: float) -> np.ndarray:
     """
     Compute dipole acceleration from position expectation values X(t).
     d^2X/dt^2.
-    
-    Matches logic:
-        velocity = gradient(X)
-        acceleration = gradient(velocity)
     
     Args:
         X_t_values (np.ndarray): Time trace of position expectation.

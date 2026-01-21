@@ -15,14 +15,14 @@ def compute_hhg_spectrum(acceleration: np.ndarray, dt: float, omega_drive: float
     """
     N_t = len(acceleration)
     
-    # Hanning window (matches notebook)
+    # Use Window function to denoise
     window = np.hanning(N_t)
     acc_windowed = acceleration * window
     
-    # Power spectrum
+    # Compute Power spectrum
     spectrum = np.abs(fft(acc_windowed))**2
     
-    # Frequencies
+    # Compute Frequencies
     freqs = fftfreq(N_t, d=dt)
     
     # Convert to harmonic order

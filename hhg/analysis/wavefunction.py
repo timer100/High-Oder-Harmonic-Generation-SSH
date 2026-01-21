@@ -1,4 +1,3 @@
-
 import numpy as np
 import matplotlib.pyplot as plt
 from scipy.linalg import eigh
@@ -60,8 +59,6 @@ def plot_wavefunction(model: Hamiltonian, states, kind: str = "wavefunction", ax
             ylabel = r"$|\psi(x)|^2$"
             label = f"Density: State {i} (E={energy:.4f})"
         else:
-            # Default to wavefunction amplitude (Real part)
-            # For 1D real Hamiltonians, eigenstates are real.
             y_data = np.real(psi)
             ylabel = r"$\psi(x)$"
             label = f"WF: State {i} (E={energy:.4f})"
