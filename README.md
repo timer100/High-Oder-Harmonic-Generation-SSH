@@ -123,3 +123,7 @@ plot_wavefunction(ssh_topo, states=50, kind="density", title="State 50 Density")
 # 4. Plotting range of states
 plot_wavefunction(ssh_topo, states=range(48, 52), title="Edge States")
 ```
+
+## 7. License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
