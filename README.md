@@ -47,7 +47,7 @@ ssh_topo = SSHModel(N=100, delta=-0.15, V_A=0.0)
 ssh_trivial = SSHModel(N=100, delta=0.15, V_A=0.0)
 ```
 
-## 4. Standard Time Evolution (HHG)
+## 4. Time Evolution (HHG)
 
 To simulate HHG, define an electric field pulse and evolve the system.
 
@@ -62,11 +62,11 @@ evolver = TimeEvolver(ssh_topo)
 t_max = 2 * np.pi * pulse.ncyc / pulse.omega
 dt = 0.1
 
-# Get initial state
+# 4. Get initial state
 psi0 = ssh_topo.get_ground_state()
 iterator = evolver.evolve(pulse, t_max, dt, initial_state=psi0)
 
-# 4. Collect Data (Dipole Acceleration)
+# 5. Collect Data (Dipole Acceleration)
 X_t = []
 
 for step, t, psi in iterator:
@@ -110,6 +110,7 @@ Tools for analyzing the system's static properties: Band Structure and Wavefunct
 ```python
 from hhg.analysis import plot_band_structure, plot_wavefunction
 
+# Take N=100 for example (100 states)
 # 1. Band Structure
 plot_band_structure(ssh_topo, label="SSH Topological")
 
