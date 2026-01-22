@@ -77,6 +77,8 @@ acc = compute_dipole_acceleration(np.array(X_t), dt)
 harmonics, spectrum = compute_hhg_spectrum(acc, dt, pulse.omega)
 ```
 
+![HHG Spectrum](Images/HHG_SSH.png)
+
 ## 5. Current Decomposition (CD)
 
 Separates the HHG spectrum into contributions from the **Valence Band (VB)** and **Edge States (ES)**.
@@ -102,6 +104,8 @@ acc_edge  = dipoles['ES']
 w, I_total = compute_hhg_spectrum(acc_total, dt, 0.0075)
 w, I_edge  = compute_hhg_spectrum(acc_edge, dt, 0.0075)
 ```
+
+![Current Decomposition](Images/HHG_SSH_CD.png)
 
 ## 6. Static Analysis
 

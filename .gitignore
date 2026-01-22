@@ -35,6 +35,7 @@ ENV/
 # Project Specific
 Raw_data/
 Results/
+Dailly_Report/
 
 # Jupyter Notebooks
 .ipynb_checkpoints
